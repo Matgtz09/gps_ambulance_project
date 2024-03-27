@@ -1,0 +1,72 @@
+<h1>Create a new Hospital</h1>
+
+<%= form_with model: @hospital do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :address %><br>
+    <%= form.text_field :address %>
+  </div>
+
+  <div>
+    <%= form.label :city %><br>
+    <%= form.text_field :city %>
+  </div>
+
+  <div>
+    <%= form.label :state %><br>
+    <%= form.text_field :state %>
+  </div>
+
+  <div>
+    <%= form.label :country %><br>
+    <%= form.text_field :country %>
+  </div>
+
+  <div>
+    <%= form.label :phone_number %><br>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div>
+    <%= form.label :email_address %><br>
+    <%= form.text_field :email_address %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact %><br>
+    <%= form.text_field :emergency_contacttle %>
+  </div>
+
+  <div>
+    <%= form.label :capacity %><br>
+    <%= form.number_field :capacity %>
+  </div>
+
+  <div>
+    <%= form.label :specialties %><br>
+    <%= form.text_field :specialties %>
+  </div>
+
+  <div>
+    <%= form.label :operating_hours %><br>
+    <%= form.text_field :operating_hours %>
+  </div>
+
+  <div>
+    <%= form.label :insurance_accepted %><br>
+    <%= form.text_field :insurance_accepted %>
+  </div>
+
+  <div>
+    <%= form.label :website %><br>
+    <%= form.text_field :website %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

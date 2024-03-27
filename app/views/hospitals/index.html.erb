@@ -1,0 +1,11 @@
+<h1>Hospitals</h1>
+
+<ul>
+  <% @hospital.each do |hospital| %>
+    <li>
+      <a href="<%= hospital_path(hospital) %>">
+        <%= hospital.name %>
+      </a>
+    </li>
+  <% end %>
+</ul>
