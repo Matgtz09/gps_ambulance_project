@@ -21,6 +21,20 @@ class HospitalsController < ApplicationController
     end
   end
 
+  def edit
+    @hospital = Hospital.find(params[:id])
+  end
+
+  def update
+    @hospital = Hospital.find(params[:id])
+
+    if @hospital.update(hospital_params)
+      redirect_to @hospital
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
   private
   def hospital_params
     params.require(:hospital).permit(

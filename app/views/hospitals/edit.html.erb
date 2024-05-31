@@ -1,6 +1,6 @@
-<h1>Create a new Hospital</h1>
+<h1>Edit the Hospital</h1>
 
-<%# <%= javascript_pack_tag 'application' %>
+<h4><%= link_to "Show", hospital_path(@hospital) %>
 
 <%= form_with model: @hospital do |form| %>
   <div>
@@ -68,16 +68,7 @@
     <%= form.text_field :website %>
   </div>
 
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
-
-<%# <div>
-    <%= form.hidden_field :latitude, id: 'latitude' 
-    <%= form.number_field :latitude
-  <div>
-
-  <div>
-    <%= form.hidden_field :longitude, id: 'latitude'
-    <%= form.number_field :longitude >
-  <div> %>

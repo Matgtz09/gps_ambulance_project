@@ -1,0 +1,18 @@
+<h1><%= @ambulance.number %></h1>
+
+<p><%= @ambulance.hospital_id %></p>
+
+<p><%= @ambulance.patient_id %></p>
+
+<p><%= @ambulance.last_known_lat %></p>
+
+<p><%= @ambulance.last_known_long %></p>
+
+<p><%= @ambulance.distance_from_hospital %></p>
+
+<p><%= @hospital.phone_number %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_ambulance_path(@ambulance) %></li>
+  <li><%= link_to "All ambulances", ambulance_paths %></li>
+</ul>
