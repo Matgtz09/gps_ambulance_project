@@ -12,9 +12,9 @@ class HospitalsController < ApplicationController
   end
 
   def create
-    @hospital = Hospital.new(hospital_params)
+    @hospital = Hospitals::CreateService.new(hospital_params).call
 
-    if @hospital.save
+    if @hospital.present?
       redirect_to @hospital
     else
       render :new, status: :unprocessable_entity
@@ -35,25 +35,39 @@ class HospitalsController < ApplicationController
     end
   end
 
+  def destroy
+    @hospital = Hospital.find(params[:id])
+
+    if @hospital.present?
+      @hospital.destroy
+
+      redirect_to hospitals_path, notice: 'Hospital was successfully deleted.'
+    else
+      render :destroy, status: :unprocessable_entity
+    end
+  end
+
   private
+
   def hospital_params
     params.require(:hospital).permit(
-      :title,
-      :name,
       :address,
+      :capacity,
       :city,
-      :state,
       :country,
-      :phone_number,
       :email_address,
       :emergency_contact,
-      :capacity,
-      :specialties,
-      :operating_hours,
       :insurance_accepted,
-      :website,
       :latitude,
-      :longitude
+      :longitude,
+      :name,
+      :operating_hours,
+      :phone_number,
+      :specialties,
+      :state,
+      :title,
+      :zip_code,
+      :website,
       )
   end
 end

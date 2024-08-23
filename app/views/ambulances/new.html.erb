@@ -1,0 +1,62 @@
+<h1>Create a new Ambulance</h1>
+
+<%# <%= javascript_pack_tag 'application' %>
+<%= form_with model: @ambulance do |form| %>
+  <div>
+    <%= form.label :driver_contact %><br>
+    <%= form.text_field :driver_contact %>
+  </div>
+
+  <div>
+    <%= form.label :driver_name %><br>
+    <%= form.text_field :driver_name %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact %><br>
+    <%= form.number_field :emergency_contact %>
+  </div>
+
+  <div>
+    <%= form.label :equipment_list %><br>
+    <%= form.text_field :equipment_list %>
+  </div>
+
+  <div>
+    <%= form.label :fuel_level %><br>
+    <%= form.text_field :fuel_level %>
+  </div>
+
+  <div>
+    <%= form.label :hospital %><br>
+    <%= form.text_field :hospital_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_serviced_at %><br>
+    <%= form.text_field :last_serviced_at %>
+  </div>
+
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :registration_number %><br>
+    <%= form.number_field :registration_number %>
+  </div>
+
+  <div>
+    <%= form.label :service_due_at %><br>
+    <%= form.text_field :service_due_at %>
+  </div>
+
+  <div>
+    <%= form.label :status %><br>
+    <%= form.text_field :status %>
+  </div>
+
+    <%= form.submit %>
+  </div>
+<% end %>

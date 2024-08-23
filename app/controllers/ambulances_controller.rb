@@ -12,7 +12,7 @@ class AmbulancesController < ApplicationController
   end
 
   def create
-    @ambulance = Ambulance.new(ambulance_params)
+    @ambulance = Ambulance.new(ambulance_params.merge(hospital_id: hospital.id).except(:hospital_name))
 
     if @ambulance.save
       redirect_to @ambulance
@@ -33,17 +33,28 @@ class AmbulancesController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  end 
+  end
+
+  def hospital
+    Hospital.find_by(name: ambulance_params[:hospital_name])
+  end
 
   def ambulance_params
     params.require(:ambulance).permit(
-      number:,
-      hospital_id:,
-      patient_id:,
-      last_known_lat:,
-      last_known_long:,
-      distance_from_hospital:,
-      phone_number:
+      :driver_contact,
+      :driver_name,
+      :emergency_contact,
+      :equipment_list,
+      :fuel_level,
+      :hospital_name,
+      :last_serviced_at,
+      :latitude,
+      :longitude,
+      :mileage,
+      :name,
+      :registration_number,
+      :service_due_at,
+      :status,
     )
   end
 end

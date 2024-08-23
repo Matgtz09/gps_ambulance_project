@@ -62,6 +62,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.hosts << "87b1-104-35-67-202.ngrok-free.app"
+  config.action_cable.allowed_request_origins = ['http://localhost:3000', 'https://87b1-104-35-67-202.ngrok-free.app']
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

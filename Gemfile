@@ -12,9 +12,15 @@ gem "sprockets-rails"
 # gem "sqlite3", "~> 1.4"
 gem 'pg'
 
+gem 'pry'
+
+gem 'pry-byebug'
+
 gem 'google-api-client'
 
 gem 'google_maps_service'
+
+gem 'geocoder'
 
 gem "figaro"
 # Use the Puma web server [https://github.com/puma/puma]
