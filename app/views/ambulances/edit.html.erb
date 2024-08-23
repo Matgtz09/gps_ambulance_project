@@ -1,0 +1,95 @@
+<h1>Edit the Ambulance</h1>
+
+<h4><%= link_to "Show", ambulance_path(@ambulance) %>
+<%# <%= javascript_pack_tag 'application' %>
+
+
+<%= form_with model: @ambulance do |form| %>
+  <div>
+    <%= form.label :driver_contact %><br>
+    <%= form.text_field :driver_contact %>
+  </div>
+
+  <div>
+    <%= form.label :driver_name %><br>
+    <%= form.text_field :driver_name %>
+  </div>
+
+  <div>
+    <%= form.label :emergency_contact %><br>
+    <%= form.number_field :emergency_contact %>
+  </div>
+
+  <div>
+    <%= form.label :equipment_list %><br>
+    <%= form.text_field :equipment_list %>
+  </div>
+
+  <div>
+    <%= form.label :fuel_level %><br>
+    <%= form.text_field :fuel_level %>
+  </div>
+
+  <div>
+    <%= form.label :hospital_name %><br>
+    <%= form.text_field :hospital_name %>
+  </div>
+
+  <div>
+    <%= form.label :last_serviced_at %><br>
+    <%= form.text_field :last_serviced_at %>
+  </div>
+
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :registration_number %><br>
+    <%= form.number_field :registration_number %>
+  </div>
+
+  <div>
+    <%= form.label :service_due_at %><br>
+    <%= form.text_field :service_due_at %>
+  </div>
+
+  <div>
+    <%= form.label :status %><br>
+    <%= form.text_field :status %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<%# <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          // Ensure these elements exist in the DOM
+          const latitudeInput = document.getElementById('latitude');
+          const longitudeInput = document.getElementById('longitude');
+
+          if (latitudeInput && longitudeInput) {
+            latitudeInput.value = latitude;
+            longitudeInput.value = longitude;
+          } else {
+            console.error("Latitude or Longitude input element not found.");
+          }
+        },
+        function(error) {
+          console.error("Error:", error.message);
+        }
+      );
+    } else {
+      console.log("Geolocation API is not supported.");
+    }
+  });
+</script> %>

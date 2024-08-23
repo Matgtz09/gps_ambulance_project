@@ -10,9 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_21_055055) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_11_070756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ambulances", force: :cascade do |t|
+    t.string "name"
+    t.string "registration_number"
+    t.string "status"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "driver_name"
+    t.string "driver_contact"
+    t.text "equipment_list"
+    t.datetime "last_serviced_at"
+    t.datetime "service_due_at"
+    t.integer "mileage"
+    t.float "fuel_level"
+    t.string "emergency_contact"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "hospital_id"
+    t.index ["hospital_id"], name: "index_ambulances_on_hospital_id"
+  end
+
+  create_table "hospital_ambulances", force: :cascade do |t|
+    t.bigint "hospital_id", null: false
+    t.bigint "ambulance_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ambulance_id"], name: "index_hospital_ambulances_on_ambulance_id"
+    t.index ["hospital_id"], name: "index_hospital_ambulances_on_hospital_id"
+  end
 
   create_table "hospitals", force: :cascade do |t|
     t.string "name", null: false
@@ -34,4 +63,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_21_055055) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "ambulances", "hospitals"
+  add_foreign_key "hospital_ambulances", "ambulances"
+  add_foreign_key "hospital_ambulances", "hospitals"
 end

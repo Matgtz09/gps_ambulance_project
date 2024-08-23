@@ -1,11 +1,18 @@
-<h1>Hospitals</h1>
+<h1>Ambulances</h1>
 
 <ul>
-  <% @hospital.each do |hospital| %>
+  <% @ambulance.each do |ambulance| %>
     <li>
-      <a href="<%= hospital_path(hospital) %>">
-        <%= hospital.name %>
+      <a href="<%= ambulance_path(ambulance) %>">
+        <%= ambulance.name %>
       </a>
     </li>
   <% end %>
+
+  <li><%= link_to "All Ambulances", ambulances_path %></li>
+ 
 </ul>
+
+ <button>
+    <%= link_to "Create an Ambulance", new_ambulance_path%>
+  </button>

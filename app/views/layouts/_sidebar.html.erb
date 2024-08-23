@@ -1,0 +1,28 @@
+<div class="sidebar">
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Ambulance', ambulances_path %></li>
+    <li><%= link_to 'Hospitals', hospitals_path%></li>
+    <!-- Add more links as needed -->
+  </ul>
+</div>
+
+<style>
+  .sidebar {
+    width: 200px;
+    height: 100%;
+    float: left;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-right: 1px solid #ddd;
+  }
+
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .sidebar ul li {
+    margin-bottom: 10px;
+  }
+</style>

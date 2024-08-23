@@ -1,6 +1,3 @@
-require 'google_maps_service'
-require 'net/http'
-require 'json'
 
 class GoogleLocationService
   def self.get_current_location
@@ -23,14 +20,14 @@ class GoogleLocationService
     end
   end
 
-  def self.get_coordinates_of_location(address)
-    response = @client.geocode(address)
+  def self.get_coordinates_of_location(address:, city:, state:, zip_code:)
+    full_address = "#{address}, #{city}, #{state}, #{zip_code}"
+    response = Geocoder.coordinates(address)
     
     if response.any?
-      location = response.first[:geometry][:location]
-      latitude = location[:lat]
-      longitude = location[:lng]
-      { latitude: latitude, longitude: longitude }
+      latitude = response[0]
+      longitude = response[1]
+      [latitude: latitude, longitude: longitude]
     else
       raise StandardError, "Geocoding failed, no results found."
     end

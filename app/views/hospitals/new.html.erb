@@ -14,6 +14,11 @@
   </div>
 
   <div>
+    <%= form.label :zip_code %><br>
+    <%= form.number_field :zip_code %>
+  </div>
+
+  <div>
     <%= form.label :city %><br>
     <%= form.text_field :city %>
   </div>
@@ -36,11 +41,6 @@
   <div>
     <%= form.label :email_address %><br>
     <%= form.text_field :email_address %>
-  </div>
-
-  <div>
-    <%= form.label :emergency_contact %><br>
-    <%= form.text_field :emergency_contact %>
   </div>
 
   <div>
@@ -72,6 +72,35 @@
   </div>
 <% end %>
 
+<%# <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          // Ensure these elements exist in the DOM
+          const latitudeInput = document.getElementById('latitude');
+          const longitudeInput = document.getElementById('longitude');
+
+          if (latitudeInput && longitudeInput) {
+            latitudeInput.value = latitude;
+            longitudeInput.value = longitude;
+          } else {
+            console.error("Latitude or Longitude input element not found.");
+          }
+        },
+        function(error) {
+          console.error("Error:", error.message);
+        }
+      );
+    } else {
+      console.log("Geolocation API is not supported.");
+    }
+  });
+</script> %>
+
 <%# <div>
     <%= form.hidden_field :latitude, id: 'latitude' 
     <%= form.number_field :latitude
@@ -81,3 +110,7 @@
     <%= form.hidden_field :longitude, id: 'latitude'
     <%= form.number_field :longitude >
   <div> %>
+  <%# <div>
+    <%= form.hidden_field :latitude, id: 'latitude' %>
+    <%# <%= form.hidden_field :longitude, id: 'longitude' %>
+  <%# </div> %>

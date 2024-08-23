@@ -1,6 +1,8 @@
 <h1>Edit the Hospital</h1>
 
 <h4><%= link_to "Show", hospital_path(@hospital) %>
+<%# <%= javascript_pack_tag 'application' %>
+
 
 <%= form_with model: @hospital do |form| %>
   <div>
@@ -69,6 +71,40 @@
   </div>
 
   <div>
+    <%= form.hidden_field :latitude, id: 'latitude' %>
+    <%= form.hidden_field :longitude, id: 'longitude' %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<%# <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        function(position) {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          // Ensure these elements exist in the DOM
+          const latitudeInput = document.getElementById('latitude');
+          const longitudeInput = document.getElementById('longitude');
+
+          if (latitudeInput && longitudeInput) {
+            latitudeInput.value = latitude;
+            longitudeInput.value = longitude;
+          } else {
+            console.error("Latitude or Longitude input element not found.");
+          }
+        },
+        function(error) {
+          console.error("Error:", error.message);
+        }
+      );
+    } else {
+      console.log("Geolocation API is not supported.");
+    }
+  });
+</script> %>
