@@ -32,12 +32,12 @@
 
   <div>
     <%= form.label :hospital_name %><br>
-    <%= form.text_field :hospital_name %>
+    <%= form.text_field :hospital_name, value: @ambulance.hospital.name %>
   </div>
 
   <div>
     <%= form.label :last_serviced_at %><br>
-    <%= form.text_field :last_serviced_at %>
+    <%= form.date_field :last_serviced_at %>
   </div>
 
   <div>
@@ -52,7 +52,7 @@
 
   <div>
     <%= form.label :service_due_at %><br>
-    <%= form.text_field :service_due_at %>
+    <%= form.date_field :service_due_at %>
   </div>
 
   <div>

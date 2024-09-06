@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ambulance Tracking</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body>
+  <h1>Tracking Ambulance: <%= @ambulance.name %></h1>
+  <p>Tracking your location...</p>
+  <form id="location-form">
+    <input type="hidden" id="ambulance-id" value="<%= @ambulance.id %>">
+  </form>
+
+  <%= javascript_pack_tag 'ambulance_location_channel', 'data-turbolinks-track': 'reload' %>
+
+</body>
+</html>

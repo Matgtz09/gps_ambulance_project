@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   resources :hospitals
   resources :ambulances
+  get "/webhook", to: "webhook#new", as: "login"
+  post "/webhook", to: "webhook#create"
+  get "/webhook/tracking", to: "webhook#show", as: "tracking"
+  mount ActionCable.server => '/cable'
   # Defines the root path route ("/")
   # root "posts#index"
 end
