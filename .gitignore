@@ -36,4 +36,4 @@
 
 # Ignore application configuration
 /config/application.yml
-/config/cable.yml
+config/cable.yml

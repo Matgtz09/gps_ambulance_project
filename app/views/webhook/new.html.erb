@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ambulance Login</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
+<body>
+  <h1>Ambulance Login</h1>
+
+  <% if flash[:error] %>
+    <p style="color: red;"><%= flash[:error] %></p>
+  <% end %>
+
+  <%= form_with url: login_path, method: :post, local: true do |form| %>
+    <div>
+      <%= form.label :ambulance_name, "Ambulance Name" %>
+      <%= form.text_field :ambulance_name, required: true %>
+    </div>
+    <div>
+      <%= form.label :registration_number, "Registration Number" %>
+      <%= form.text_field :registration_number, required: true %>
+    </div>
+    <div>
+      <%= form.submit "Login" %>
+    </div>
+  <% end %>
+</body>
+</html>

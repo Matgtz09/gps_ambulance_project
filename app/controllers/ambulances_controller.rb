@@ -12,9 +12,11 @@ class AmbulancesController < ApplicationController
   end
 
   def create
-    @ambulance = Ambulance.new(ambulance_params.merge(hospital_id: hospital.id).except(:hospital_name))
+    binding.pry
+    @ambulance = Ambulances::CreateService.new(ambulance_attributes).call
+    #@ambulance = Ambulance.new(ambulance_params.merge(hospital_id: hospital.id).except(:hospital_name))
 
-    if @ambulance.save
+    if @ambulance.save!
       redirect_to @ambulance
     else
       render :new, status: :unprocessable_entity
@@ -28,7 +30,7 @@ class AmbulancesController < ApplicationController
   def update
     @ambulance = Ambulance.find(params[:id])
 
-    if @ambulance.update(ambulance_params)
+    if @ambulance.update(ambulance_attributes)
       redirect_to @ambulance
     else
       render :edit, status: :unprocessable_entity
@@ -37,6 +39,10 @@ class AmbulancesController < ApplicationController
 
   def hospital
     Hospital.find_by(name: ambulance_params[:hospital_name])
+  end
+
+  def ambulance_attributes
+    ambulance_params.merge(hospital_id: hospital.id).except(:hospital_name)
   end
 
   def ambulance_params

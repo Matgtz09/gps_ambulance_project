@@ -1,26 +1,59 @@
 <h1><%= @ambulance.name %></h1>
 
-<p><%= @ambulance.driver_name %></p>
+<p>Driver: 
+  <br>
+  <%= @ambulance.driver_name %>
+</p>
 
-<p><%= @ambulance.driver_contact %></p>
+<p>Driver contact: 
+  <br>
+  <%= @ambulance.driver_contact %>
+</p>
 
-<p><%= @ambulance.equipment_list %></p>
+<p>ambulance equipment list: 
+  <br>
+  <%= @ambulance.equipment_list %>
+</p>
 
-<p><a href="<%= hospital_path(@ambulance.hospital) %>"> <%= @ambulance.hospital.name %> </a></p>
+<p>hospital: 
+  <br>
+  <a href="<%= hospital_path(@ambulance.hospital) %>"> <%= @ambulance.hospital.name %> </a>
+</p>
 
-<p><%= @ambulance.last_serviced_at %></p>
+<p>last_serviced_at: 
+  <br>
+  <%= @ambulance.last_serviced_at&.to_date %>
+</p>
 
-<p><%= @ambulance.latitude %></p>
+<p>latitude: 
+  <br>
+  <%= @ambulance.latitude %>
+</p>
 
-<p><%= @ambulance.longitude %></p>
+<p>longitude: 
+  <br>
+  <%= @ambulance.longitude %>
+</p>
 
-<p><%= @ambulance.mileage %></p>
+<%# <p>mileage: 
+  <br>
+  <%= @ambulance.mileage %>
+<%# </p> %>
 
-<p><%= @ambulance.registration_number %></p>
+<p>registration_number: 
+  <br>
+  <%= @ambulance.registration_number %>
+</p>
 
-<p><%= @ambulance.service_due_at %></p>
+<p>service_due_at: 
+  <br>
+  <%= @ambulance.service_due_at&.to_date %>
+</p>
 
-<p><%= @ambulance.status %></p>
+<p>status: 
+  <br>
+  <%= @ambulance.status %>
+</p>
 
 <ul>
   <li><%= link_to "Edit", edit_ambulance_path(@ambulance) %></li>
