@@ -12,7 +12,6 @@ class AmbulancesController < ApplicationController
   end
 
   def create
-    binding.pry
     @ambulance = Ambulances::CreateService.new(ambulance_attributes).call
     #@ambulance = Ambulance.new(ambulance_params.merge(hospital_id: hospital.id).except(:hospital_name))
 

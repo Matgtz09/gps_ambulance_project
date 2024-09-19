@@ -3,3 +3,5 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import './geolocation'
 import "channels"
+require("@rails/ujs").start()
+require("@turbo-rails/turbo").start() // If using Turbo

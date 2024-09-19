@@ -1,15 +1,25 @@
 import consumer from "channels/consumer"
 
-consumer.subscriptions.create({ channel: "AmbulanceLocationChannel" }, {
-  connected() {
-    console.log("Connected to WebSocket");
-  },
+const ambulanceId = document.getElementById("ambulance-id").value;
 
-  disconnected() {
-    console.log("Disconnected from WebSocket");
-  },
+if (ambulanceId) {
+  console.log("Ambulance ID:", ambulanceId);
+  console.log("Subscribing to:", { channel: "AmbulanceLocationChannel", ambulance_id: ambulanceId });
 
-  received(data) {
-    console.log("Received data:", data);
-  }
-});
+  consumer.subscriptions.create(
+    { channel: "AmbulanceLocationChannel", ambulance_id: "1" },
+    {
+      connected() {
+        console.log("Connected to WebSocket");
+      },
+      disconnected() {
+        console.log("Disconnected from WebSocket");
+      },
+      received(data) {
+        console.log("Received data:", data);
+      }
+    }
+  );
+} else {
+  console.error("Ambulance ID is missing.");
+}
