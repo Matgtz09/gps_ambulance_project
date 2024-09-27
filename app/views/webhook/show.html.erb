@@ -4,15 +4,23 @@
   <title>Ambulance Tracking</title>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%= action_cable_meta_tag %>
 </head>
 <body>
   <h1>Tracking Ambulance: <%= @ambulance.name %></h1>
   <p>Tracking your location...<%= @ambulance.id %></p>
   <form id="location-form">
     <input type="hidden" id="ambulance-id" value="<%= @ambulance.id %>">
+    <input type="text" id="latitude" placeholder="Latitude">
+    <input type="text" id="longitude" placeholder="Longitude">
   </form>
-
- <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
 </body>
 </html>
+<%# <%= button_to 'Log Out', login_path, method: :get, class: 'btn btn-danger' %>
+<%= button_to 'Log Out', login_path, method: :get, class: 'btn btn-danger', data: { turbo: "false" } %>
+
+<script>
+  window.ambulanceId = "<%= @ambulance.id %>";
+</script>

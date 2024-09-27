@@ -1,7 +1,7 @@
 class AmbulanceLocationChannel < ApplicationCable::Channel
   def subscribed
     # Stream specific to the ambulance being tracked
-    Rails.logger.debug("Params: #{params.inspect}") # Log all params
+    #Rails.logger.debug("Params: #{params.inspect}") # Log all params
     Rails.logger.debug("Subscribing to ambulance_location_#{params[:ambulance_id]}")
 
     # Ensure ambulance_id is being passed and is not nil
@@ -17,16 +17,37 @@ class AmbulanceLocationChannel < ApplicationCable::Channel
     stop_all_streams
   end
 
-  def receive(data)
-    Rails.logger.debug("Received data: #{data.inspect}")
-  
-    if data['ambulance_id'].present?
-      ActionCable.server.broadcast("ambulance_location_#{data['ambulance_id']}", {
-        latitude: data['latitude'],
-        longitude: data['longitude']
+  def update_location(data)
+    # Log the received data for debugging purposes
+    Rails.logger.info "Received location data: #{data.inspect}"
+
+    # Find the ambulance using the `ambulance_id` from params
+    ambulance = Ambulance.find(params[:ambulance_id])
+
+    if ambulance
+      # Update the ambulance's latitude and longitude
+      ambulance.update!(latitude: data['latitude'], longitude: data['longitude'])
+
+      # Optionally broadcast the updated location to all subscribers
+      ActionCable.server.broadcast("ambulance_location_#{params[:ambulance_id]}", {
+        latitude: ambulance.latitude,
+        longitude: ambulance.longitude
       })
     else
-      Rails.logger.debug("ambulance_id is missing in the received data")
+      Rails.logger.error("Ambulance not found with ID: #{params[:ambulance_id]}")
     end
   end
+
+  # def receive(data)
+  #   Rails.logger.debug("Received data: #{data.inspect}")
+  
+  #   if data['ambulance_id'].present?
+  #     ActionCable.server.broadcast("ambulance_location_#{data['ambulance_id']}", {
+  #       latitude: data['latitude'],
+  #       longitude: data['longitude']
+  #     })
+  #   else
+  #     Rails.logger.debug("ambulance_id is missing in the received data")
+  #   end
+  # end
 end
