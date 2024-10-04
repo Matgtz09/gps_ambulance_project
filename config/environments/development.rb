@@ -63,6 +63,8 @@ Rails.application.configure do
   config.assets.quiet = true
 
   config.hosts << ENV['WEBSITE_DOMAIN']
+  
+  config.action_cable.url = "ws://localhost:3000/cable"
   config.action_cable.allowed_request_origins = ['http://localhost:3000', ENV['WEBSITE_URL']]
 
   # Raises error for missing translations.
