@@ -1,5 +1,8 @@
 development:
   adapter: async
+  allowed_request_origins:
+    - http://localhost:3000
+    - https://6c21-104-35-67-202.ngrok-free.app/new
 
 test:
   adapter: test

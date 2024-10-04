@@ -62,7 +62,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  config.hosts << ENV['WEBSITE_DOMAIN']
+  #config.hosts << ENV['WEBSITE_DOMAIN']
+  config.hosts << "6c21-104-35-67-202.ngrok-free.app"
+  #config.action_cable.url = "ws://localhost:3000/cable"
   config.action_cable.allowed_request_origins = ['http://localhost:3000', ENV['WEBSITE_URL']]
 
   # Raises error for missing translations.

@@ -11,8 +11,8 @@
   <p>Tracking your location...<%= @ambulance.id %></p>
   <form id="location-form">
     <input type="hidden" id="ambulance-id" value="<%= @ambulance.id %>">
-    <input type="text" id="latitude" placeholder="Latitude">
-    <input type="text" id="longitude" placeholder="Longitude">
+    <input type="text" id="latitude" placeholder="Latitude", readonly>
+    <input type="text" id="longitude" placeholder="Longitude", readonly>
   </form>
 <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
